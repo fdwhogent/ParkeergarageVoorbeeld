@@ -163,8 +163,10 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaInApp.InMethodsEnMetVelden {
             RegistreerSlagboomPassage(SlagboomRegistratie.Vertrekken);
         }
         static private void RegistreerSlagboomPassage(SlagboomRegistratie type) {
-            if (AantalSlagboomPassages() + 1 > _slagboomPassages.Length)
+            if (AantalSlagboomPassages() + 1 > _slagboomPassages.Length) {
                 Array.Resize(ref _slagboomPassages, _slagboomPassages.Length * 2);
+                Array.Resize(ref _slagboomPassagesTijdstippen, _slagboomPassagesTijdstippen.Length * 2);
+            }
             _slagboomPassages[_aantalSlagboomPassages] = type;
             _slagboomPassagesTijdstippen[_aantalSlagboomPassages] = DateTime.Now;
             _aantalSlagboomPassages++;
@@ -260,7 +262,7 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaUitApp.ModulaireAanpak {
     // De oplossing bestaat erin de logica om te beginnen we te schuiven uit de App naar een 
     // aparte "module" (hier: klasse) die de informatie bewaart en de nodige methodes aanbiedt
     // om die informatie te manipuleren en te bevragen...
-    class Parkeergarage {
+    class Parkeergarage { // "module"
         // State (gegevens/informatie):
         // Velden die de informatie bewaren... (merk op: steeds private, toch louter intern (hier binnen de klasse) aangesproken)
         static private int _aantalVoertuigen = 0;
@@ -388,7 +390,7 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaUitApp.ObjectGeoriënteerdeAanpak {
         // State (gegevens/informatie):
         // Velden die de informatie bewaren... (merk op: steeds private, toch louter intern (hier binnen de klasse) aangesproken)
         private int _aantalVoertuigen = 0;
-        private int _capaciteit = 20;
+        private int _capaciteit = 100;
         private SlagboomRegistratie[] _slagboomPassages = new SlagboomRegistratie[32];
         private DateTime[] _slagboomPassagesTijdstippen = new DateTime[32];
         private int _aantalSlagboomPassages = 0;
@@ -410,6 +412,7 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaUitApp.ObjectGeoriënteerdeAanpak {
             _slagboomPassagesTijdstippen[_aantalSlagboomPassages] = DateTime.Now;
             _aantalSlagboomPassages++;
         }
+        public void SetCapaciteit(int capaciteit) { _capaciteit = capaciteit; }
         // Query methods ("bevragen") die informatie teruggeven op basis van de informatie in de velden...
         public SlagboomRegistratie? SlagboomPassage(int index) {
             if (index < 0 || index >= AantalSlagboomPassages())
@@ -433,7 +436,6 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaUitApp.ObjectGeoriënteerdeAanpak {
         }
         public int AantalSlagboomPassages() { return _aantalSlagboomPassages; }
         public int GetCapaciteit() { return _capaciteit; }
-        public void SetCapaciteit(int capaciteit) { _capaciteit = capaciteit; }
         public int AantalVoertuigen() { return _aantalVoertuigen; }
         public int AantalVrijePlaatsen() { return GetCapaciteit() - AantalVoertuigen(); }
         public bool IsVol() { return AantalVrijePlaatsen() <= 0; }
