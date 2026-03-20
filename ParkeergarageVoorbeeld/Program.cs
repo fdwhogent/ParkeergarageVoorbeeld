@@ -23,7 +23,7 @@
                 else
                     Console.WriteLine();
 
-                Console.WriteLine($"De garage heeft plaats voor {capaciteit} voertuig's.");
+                Console.WriteLine($"De garage heeft plaats voor {capaciteit} voertuigen.");
                 Console.WriteLine($"Bezet: {aantalvoertuigen}");
 
                 bool isVol = aantalvoertuigen >= capaciteit;
@@ -45,12 +45,12 @@
                 if (isVol) {
                     Console.WriteLine("Druk op '-' indien een voertuig vertrekt. (q om te stoppen)");
                 } else if (isLeeg) {
-                    Console.WriteLine("Druk op '+' indien een voertuig vertrekt. (q om te stoppen)");
+                    Console.WriteLine("Druk op '+' indien een voertuig binnenrijdt. (q om te stoppen)");
                 } else {
                     Console.WriteLine("Druk op '+' indien een voertuig binnenrijdt, '-' voor vertrek. (q om te stoppen)");
                 }
 
-                var key = Console.ReadKey(true);
+                ConsoleKeyInfo key = Console.ReadKey(true);
                 if (key.KeyChar == 'q' || key.KeyChar == 'Q') {
                     break;
                 } else if ((!isLeeg && key.KeyChar == '-') || (!isVol && key.KeyChar == '+')) {
@@ -102,7 +102,7 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaInApp.InMethodsEnMetVelden {
                 else
                     Console.WriteLine();
 
-                Console.WriteLine($"De garage heeft plaats voor {Capaciteit()} voertuig's.");
+                Console.WriteLine($"De garage heeft plaats voor {Capaciteit()} voertuigen.");
                 Console.WriteLine($"Bezet: {AantalVoertuigen()}");
 
                 bool isVol = IsVol();
@@ -326,7 +326,7 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaUitApp.ModulaireAanpak {
                 else
                     Console.WriteLine();
 
-                Console.WriteLine($"De garage heeft plaats voor {Parkeergarage.Capaciteit()} voertuig's.");
+                Console.WriteLine($"De garage heeft plaats voor {Parkeergarage.Capaciteit()} voertuigen.");
                 Console.WriteLine($"Bezet: {Parkeergarage.AantalVoertuigen()}");
 
                 bool isVol = Parkeergarage.IsVol();
