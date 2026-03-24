@@ -45,7 +45,7 @@
                 if (isVol) {
                     Console.WriteLine("Druk op '-' indien een voertuig vertrekt. (q om te stoppen)");
                 } else if (isLeeg) {
-                    Console.WriteLine("Druk op '+' indien een voertuig vertrekt. (q om te stoppen)");
+                    Console.WriteLine("Druk op '+' indien een voertuig binnenrijdt. (q om te stoppen)");
                 } else {
                     Console.WriteLine("Druk op '+' indien een voertuig binnenrijdt, '-' voor vertrek. (q om te stoppen)");
                 }
@@ -268,7 +268,6 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaUitApp.ModulaireAanpak {
         static private SlagboomRegistratie[] _slagboomPassages = new SlagboomRegistratie[32];
         static private DateTime[] _slagboomPassagesTijdstippen = new DateTime[32];
         static private int _aantalSlagboomPassages = 0;
-
         // Behavior (gedrag): (merk op: vaak public, hierdoor kan de buitenwereld er gebruik van maken (interactie mee hebben))
         // Commando methods ("manipulatie") die de informatie in de velden aanpassen...
         static public void RegistreerBinnenrijden() {
