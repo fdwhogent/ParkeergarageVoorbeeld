@@ -385,13 +385,13 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaUitApp.ObjectGeoriënteerdeAanpak {
     // maken we van de Parkeergarage code-eenheid/module een echt datatype.  Een type dat we kunnen
     // gebruiken om objecten/instanties van te maken, objecten die elk hun eigen informatie bewaren
     // en manipuleren...
-    class Parkeergarage {
+    class Parkeergarage { // class => definitie van een reference type
         // State (gegevens/informatie):
         // Velden die de informatie bewaren... (merk op: steeds private, toch louter intern (hier binnen de klasse) aangesproken)
         private int _aantalVoertuigen = 0;
         private int _capaciteit = 100;
-        private SlagboomRegistratie[] _slagboomPassages = new SlagboomRegistratie[32];
-        private DateTime[] _slagboomPassagesTijdstippen = new DateTime[32];
+        private SlagboomRegistratie?[] _slagboomPassages = new SlagboomRegistratie?[32];
+        private DateTime?[] _slagboomPassagesTijdstippen = new DateTime?[32];
         private int _aantalSlagboomPassages = 0;
 
         // Behavior (gedrag): (merk op: vaak public, hierdoor kan de buitenwereld er gebruik van maken (interactie mee hebben))
@@ -443,7 +443,7 @@ namespace ParkeergarageVoorbeeld.DomeinLogicaUitApp.ObjectGeoriënteerdeAanpak {
     internal class Program1 {
         static void Main() {
             Parkeergarage garageX = new Parkeergarage();
-            Parkeergarage garageY = new Parkeergarage();
+            Parkeergarage garageY = new Parkeergarage(); garageY.SetCapaciteit(50);
             do {
                 Console.WriteLine($"Garage X: (capaciteit: {garageX.GetCapaciteit()})");
                 Console.WriteLine($"   {garageX.AantalVoertuigen()} voertuigen aanwezig => {(garageX.IsVol() ? "vol" : garageX.IsLeeg() ? "leeg" : $"{garageX.AantalVrijePlaatsen()} beschikbaar")}");

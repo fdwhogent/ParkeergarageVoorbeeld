@@ -5,7 +5,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>ParkeergarageVoorbeeld.DomeinLogicaUitApp.ObjectGeoriënteerdeAanpak.Program2</StartupObject>
+    <StartupObject>ParkeergarageVoorbeeld.DomeinLogicaInApp.InMain.Program</StartupObject>
   </PropertyGroup>
 
 </Project>
